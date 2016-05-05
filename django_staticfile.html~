@@ -25,44 +25,34 @@
 	</div>
 <div id="md" style="display: none;">
 <!-- markdown -->
-#[Django REST框架](http://www.django-rest-framework.org/)
-##安装
-1. pip install djangorestframework
-2. pip install markdown  # Markdown support for the browsable API.
-3. pip install django-filter  # Filtering support
-##使用
-1. Add 'rest\_framework' to your INSTALLED\_APPS setting.
-            
-        urlpatterns = [
-            url(r'^api-auth/', include('rest\_framework.urls',  namespace='rest_framework'))
-        ]
-       
+#Django 静态文件部署
+##官方文档1.9
+###[如何部署静态文件](https://docs.djangoproject.com/en/1.9/howto/static-files/)
+1. settings.py文件，INSTALLED_APPS配置项有django.contrib.staticfiles；
+2. settings.py文件，STATIC_URL = '/static/'；
+3. 在模板中使用   
+    {% load staticfiles %}     
+    src="{% static "myexample.jpg" %}"
+4. 静态文件位于app下的static目录，也可配置STATICFILES_DIRS来指定其他位置（推荐配置一个专门 目录来存放，Django默认使用第一个找到的文件，即使还存在其他同名文件）
 
-2. If you're intending to use the browsable API you'll probably also want to add REST framework's login and logout views. Add the following to your root urls.py file.
+###[The staticfiles app](https://docs.djangoproject.com/en/1.9/ref/contrib/staticfiles/#module-django.contrib.staticfiles)
+* Django使用django.contrib.staticfiles管理静态文件，即前一部分中INSTALLED_APPS的要求配置项
+* [STATICFILES\_FINDERS](https://docs.djangoproject.com/en/1.9/ref/settings/#std:setting-STATICFILES_FINDERS)，默认配置1和2，没有3
+    1. 'django.contrib.staticfiles.finders.FileSystemFinder'搜索STATICFILES_DIRS位置的静态文件
+    2. 'django.contrib.staticfiles.finders.AppDirectoriesFinder'搜索app下static目录的静态文件
+    3. ’django.contrib.staticfiles.finders.DefaultStorageFinder‘搜索DEFAULT\_FILE\_STORAGE位置的文件
+* django.contrib.staticfiles提供了三个命令
+    1. collectstatic 通过配置的FINDERS搜索文件，然后将静态文件放到STATIC\_ROOT位置下
+    2. findstatic 搜索静态文件，有--first， --verbosity选项
+    3. runserver 当INSTALLED_APPS配置项有django.contrib.staticfiles时，覆盖默认的runserver。配置项有--nostatic，--insecure（不推荐使用）
+
+###[生产环境静态文件部署](https://docs.djangoproject.com/en/1.9/howto/static-files/deployment/)
+
 <!-- markdown end -->
 </div>
 <div class="entry" id="main">
 <!-- content -->
-<h1><a href="http://www.django-rest-framework.org/">Django REST框架</a></h1>
-<h2>安装</h2>
-<ol>
-<li>pip install djangorestframework</li>
-<li>pip install markdown  # Markdown support for the browsable API.</li>
-<li>pip install django-filter  # Filtering support</li>
-</ol>
-<h2>使用</h2>
-<ol>
-<li>
-<p>Add 'rest_framework' to your INSTALLED_APPS setting.</p>
-<pre><code>urlpatterns = [
-    url(r'^api-auth/', include('rest\_framework.urls',  namespace='rest_framework'))
-]
-</code></pre>
-</li>
-<li>
-<p>If you're intending to use the browsable API you'll probably also want to add REST framework's login and logout views. Add the following to your root urls.py file.</p>
-</li>
-</ol>
+
 <!-- content end -->
 </div>
 <br>
@@ -101,7 +91,7 @@ $(document).ready(function() {
             var pagesHtml = pagesTemplate.render({"pages": data.pages});
             $("#pages").append(pagesHtml);
             //path
-            var path = "django_rest.html";
+            var path = "django_staticfile.html";
             //path end
             var now = 0;
             for (var i = 0; i < data.posts.length; ++i)

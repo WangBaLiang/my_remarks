@@ -43,26 +43,7 @@
 </div>
 <div class="entry" id="main">
 <!-- content -->
-<h1><a href="http://www.django-rest-framework.org/">Django REST框架</a></h1>
-<h2>安装</h2>
-<ol>
-<li>pip install djangorestframework</li>
-<li>pip install markdown  # Markdown support for the browsable API.</li>
-<li>pip install django-filter  # Filtering support</li>
-</ol>
-<h2>使用</h2>
-<ol>
-<li>
-<p>Add 'rest_framework' to your INSTALLED_APPS setting.</p>
-<pre><code>urlpatterns = [
-    url(r'^api-auth/', include('rest\_framework.urls',  namespace='rest_framework'))
-]
-</code></pre>
-</li>
-<li>
-<p>If you're intending to use the browsable API you'll probably also want to add REST framework's login and logout views. Add the following to your root urls.py file.</p>
-</li>
-</ol>
+
 <!-- content end -->
 </div>
 <br>
