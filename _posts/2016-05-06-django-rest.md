@@ -11,6 +11,7 @@ disqus: y
 1. pip install djangorestframework
 2. pip install markdown  # Markdown support for the browsable API.
 3. pip install django-filter  # Filtering support
+
 ##使用
 1. Add 'rest\_framework' to your INSTALLED\_APPS setting.
             
