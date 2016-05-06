@@ -1,10 +1,8 @@
 ---
 layout: post
 title: 数据库性能优化之SQL语句
+date: 2013-05-06 16:27:31
 disqus: y
-published: true
-categories: [数据库]
-tags: [数据库,性能,sql]
 ---
 
 #[数据库性能优化之SQL语句](http://blog.jobbole.com/96996/)
