@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 数据库性能优化之SQL语句
+title: sql
 disqus: y
 published: true
 categories: 数据库
