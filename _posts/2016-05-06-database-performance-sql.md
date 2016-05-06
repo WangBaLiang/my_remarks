@@ -1,7 +1,6 @@
 ---
 layout: post
 title: 数据库性能优化之SQL语句
-date: 2013-05-06 16:27:31
 disqus: y
 ---
 
@@ -31,13 +30,13 @@ disqus: y
         union 
         select * from ls\_jg_dfys
 
-    * 这个SQL在运行时先取出两个表的结果，再用排序空间进行排序删除重复的记录，最后返回结果集，如果表数据量大的话可能会导致用磁盘进行排序。
+   * 这个SQL在运行时先取出两个表的结果，再用排序空间进行排序删除重复的记录，最后返回结果集，如果表数据量大的话可能会导致用磁盘进行排序。
 
         select * from gc_dfys 
         union all 
         select * from ls_jg_dfys
 
-    * _推荐_：采用UNION ALL操作符替代UNION，因为UNION ALL操作只是简单的将两个结果合并后就返回。   
+   * _推荐_：采用UNION ALL操作符替代UNION，因为UNION ALL操作只是简单的将两个结果合并后就返回。   
 
 7. 联接列
    * 对于有联接的列，即使最后的联接值为一个静态值，优化器是不会使用索引的。我们一起来看一个例子，假定有一个职工表(employee)，对于一个职工的姓和名分成两列存放(FIRST\_NAME和LAST\_NAME)，现在要查询一个叫比尔.克林顿(Bill Cliton)的职工。  
