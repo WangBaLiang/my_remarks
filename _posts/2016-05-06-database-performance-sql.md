@@ -1,6 +1,8 @@
 ---
 layout: post
 title: 数据库性能优化之SQL语句
+categories: [数据库]
+tags: [数据库, 性能]
 disqus: y
 ---
 
