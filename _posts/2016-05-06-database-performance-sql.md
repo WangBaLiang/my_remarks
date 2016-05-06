@@ -75,20 +75,20 @@ disqus: y
 
 ##SQL语句索引的利用
 1. 对条件字段的一些优化
-   * 采用函数处理的字段不能利用索引
+    * 采用函数处理的字段不能利用索引
 
-          substr(hbs\_bh,1,4)=’5400’，优化处理：hbs\_bh like ‘5400%’
-          trunc(sk\_rq)=trunc(sysdate)， 优化处理：sk\_rq>=trunc(sysdate) and sk\_rq<trunc(sysdate+1)
+        substr(hbs\_bh,1,4)=’5400’，优化处理：hbs\_bh like ‘5400%’
+        trunc(sk\_rq)=trunc(sysdate)， 优化处理：sk\_rq>=trunc(sysdate) and sk\_rq<trunc(sysdate+1)
 
-   * 进行了显式或隐式的运算的字段不能进行索引
+    * 进行了显式或隐式的运算的字段不能进行索引
 
-          ‘X’ || hbs\_bh>’X5400021452’，优化处理：hbs\_bh>’5400021542’
-          sk\_rq+5=sysdate，优化处理：sk\_rq=sysdate-5
+        ‘X’ || hbs\_bh>’X5400021452’，优化处理：hbs\_bh>’5400021542’
+        sk\_rq+5=sysdate，优化处理：sk\_rq=sysdate-5
 
-   * 条件内包括了多个本表的字段运算时不能进行索引
+    * 条件内包括了多个本表的字段运算时不能进行索引
 
-          ys\_df>cx\_df，无法进行优化 
-          qc\_bh || kh\_bh=’5400250000’，优化处理：qc\_bh=’5400’ and kh_bh=’250000’
+        ys\_df>cx\_df，无法进行优化 
+        qc\_bh || kh\_bh=’5400250000’，优化处理：qc\_bh=’5400’ and kh_bh=’250000’
 
    * 选择最有效率的表名顺序(只在基于规则的优化器中有效)：
      * ORACLE 的解析器按照从右到左的顺序处理FROM子句中的表名，FROM子句中写在最后的表(基础表 driving table)将被最先处理，在FROM子句中包含多个表的情况下,你必须选择记录条数最少的表作为基础表。如果有3个以上的表连接查询, 那就需要选择交叉表(intersection table)作为基础表, 交叉表是指那个被其他表所引用的表.
