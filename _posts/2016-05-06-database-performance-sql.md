@@ -42,13 +42,13 @@ tags: 数据库 性能 sql
     * _推荐_：采用UNION ALL操作符替代UNION，因为UNION ALL操作只是简单的将两个结果合并后就返回。   
 
 7. 联接列
-    * 对于有联接的列，即使最后的联接值为一个静态值，优化器是不会使用索引的。我们一起来看一个例子，假定有一个职工表(employee)，对于一个职工的姓和名分成两列存放(FIRST\_NAME和LAST\_NAME)，现在要查询一个叫比尔.克林顿(Bill Cliton)的职工。  
+   * 对于有联接的列，即使最后的联接值为一个静态值，优化器是不会使用索引的。我们一起来看一个例子，假定有一个职工表(employee)，对于一个职工的姓和名分成两列存放(FIRST\_NAME和LAST\_NAME)，现在要查询一个叫比尔.克林顿(Bill Cliton)的职工。  
 
         select * from employss where first\_name||''||last\_name ='Beill Cliton';
 
-    * 使用上述SQL，系统优化器对基于last\_name创建的索引没有使用，_推荐使用下列语法_：
+   * 使用上述SQL，系统优化器对基于last\_name创建的索引没有使用，_推荐使用下列语法_：
 
-         where first_name ='Beill' and last_name ='Cliton';
+         where first\_name ='Beill' and last\_name ='Cliton';
 
 
 8. Order by语句    
@@ -57,11 +57,10 @@ tags: 数据库 性能 sql
 
 9. NOT
 
-        select * from employee where salary <> 3000;
-
-        select * from employee where salary<3000 or salary>3000;
-    * 第二种查询方案会比第一种查询方案更快些
-    * 第二种查询允许Oracle对salary列使用索引，而第一种查询则不能使用索引
+         select * from employee where salary <> 3000;
+         select * from employee where salary<3000 or salary>3000;
+   * 第二种查询方案会比第一种查询方案更快些
+   * 第二种查询允许Oracle对salary列使用索引，而第一种查询则不能使用索引
 
 ##SQL书写注意
 1. 不同写法的SQL，如
@@ -78,24 +77,24 @@ tags: 数据库 性能 sql
 
 ##SQL语句索引的利用
 1. 对条件字段的一些优化
-    * 采用函数处理的字段不能利用索引
+   * 采用函数处理的字段不能利用索引
 
             substr(hbs\_bh,1,4)=’5400’，优化处理：hbs\_bh like ‘5400%’
             trunc(sk\_rq)=trunc(sysdate)， 优化处理：sk\_rq>=trunc(sysdate) and sk\_rq<trunc(sysdate+1)
 
-    * 进行了显式或隐式的运算的字段不能进行索引
+   * 进行了显式或隐式的运算的字段不能进行索引
 
             ‘X’ || hbs\_bh>’X5400021452’，优化处理：hbs\_bh>’5400021542’
             sk\_rq+5=sysdate，优化处理：sk\_rq=sysdate-5
 
-    * 条件内包括了多个本表的字段运算时不能进行索引
+   * 条件内包括了多个本表的字段运算时不能进行索引
 
             ys\_df>cx\_df，无法进行优化 
             qc\_bh || kh\_bh=’5400250000’，优化处理：qc\_bh=’5400’ and kh_bh=’250000’
 
-    * 选择最有效率的表名顺序(只在基于规则的优化器中有效)：
+   * 选择最有效率的表名顺序(只在基于规则的优化器中有效)：
         * ORACLE 的解析器按照从右到左的顺序处理FROM子句中的表名，FROM子句中写在最后的表(基础表 driving table)将被最先处理，在FROM子句中包含多个表的情况下,你必须选择记录条数最少的表作为基础表。如果有3个以上的表连接查询, 那就需要选择交叉表(intersection table)作为基础表, 交叉表是指那个被其他表所引用的表.
-    * WHERE子句中的连接顺序：
+   * WHERE子句中的连接顺序：
         * ORACLE采用自下而上的顺序解析WHERE子句,根据这个原理,表之间的连接必须写在其他WHERE条件之前, 那些可以过滤掉最大数量记录的条件必须写在WHERE子句的末尾.
-    * SELECT子句中避免使用 ‘ * ‘：
-       * ORACLE在解析的过程中, 会将’*’ 依次转换成所有的列名, 这个工作是通过查询数据字典完成的, 这意味着将耗费更多的时间。
+   * SELECT子句中避免使用 ‘ * ‘：
+        * ORACLE在解析的过程中, 会将’*’ 依次转换成所有的列名, 这个工作是通过查询数据字典完成的, 这意味着将耗费更多的时间。
