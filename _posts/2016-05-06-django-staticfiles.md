@@ -12,7 +12,7 @@ disqus: y
 2. settings.py文件，STATIC_URL = '/static/'；
 3. 在模板中使用
        
-        {% load staticfiles %}     
+        {% load staticfiles %}
         src="{% static "myexample.jpg" %}"
        
 4. 静态文件位于app下的static目录，也可配置STATICFILES_DIRS来指定其他位置（推荐配置一个专门 目录来存放，Django默认使用第一个找到的文件，即使还存在其他同名文件）
