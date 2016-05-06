@@ -10,11 +10,7 @@ disqus: y
 ###[如何部署静态文件](https://docs.djangoproject.com/en/1.9/howto/static-files/)
 1. settings.py文件，INSTALLED_APPS配置项有django.contrib.staticfiles；
 2. settings.py文件，STATIC_URL = '/static/'；
-3. 在模板中使用
-       
-        {% load staticfiles %}
-        src="{% static "myexample.jpg" %}"
-       
+3. 在模板中使用load staticfiles
 4. 静态文件位于app下的static目录，也可配置STATICFILES_DIRS来指定其他位置（推荐配置一个专门 目录来存放，Django默认使用第一个找到的文件，即使还存在其他同名文件）
 
 ###[The staticfiles app](https://docs.djangoproject.com/en/1.9/ref/contrib/staticfiles/#module-django.contrib.staticfiles)
