@@ -15,9 +15,9 @@ links:
   - name:         GitHub
     url:          http://github.com/wuruimiao
     external:     true
-highlighter:      rouge
+highlighter:      pygments
 permalink:        pretty
-markdown:         kramdown
+markdown:         redcarpet
 redcarpet:
   extensions:
     - smart
