@@ -16,3 +16,16 @@ disqus: y
 
 ###运行时指定settings.py
 python manage.py test --setting=Gym.settings_test.py
+
+###TransactionManagementError: An error occurred in the current transaction. You
+cant execute queries until the end of the atomic block.
+		
+		try:
+			user = User()
+			....
+			user.save()
+		except IntegrityError:
+			...
+		# 如果上述代码抛出异常，the transaction was flagged as
+		# broken，具体原理还没弄明白		
+
