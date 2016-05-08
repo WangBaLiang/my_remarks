@@ -23,7 +23,7 @@ class Client(enforce_csrf_checks=False, **defaults)
 	* 不需要任何参数，但是可以自行构造请求头，之后该请求头会传递到get和post方法
 			
 			c = Client(HTTP_USER_AGENT='Mozilla/5.0')
-
+			
 	* enforce_csrf_checks用于测试CSRF保护
 	* 该类的实例方法
 		* get(path, data=None, follow=False, secure=False, **extra)
@@ -83,7 +83,7 @@ get和post方法返回一个Reponse，不同于view返回的HttpResponse，有�
 			
 			response = client.get('/foo/')
 			response.json()['name']
-
+			
 	* request, The request data that stimulated the response.
 	* wsgi_request
 	* status_code,The HTTP status of the response, as an integer.
@@ -95,7 +95,7 @@ get和post方法返回一个Reponse，不同于view返回的HttpResponse，有�
 The test client is stateful. If a response returns a cookie, then that cookie will be stored in the test client and sent with all subsequent get() and post() requests.
 ###可用的test case classes
 Django扩展了Python的unit test
-![Django test](./django_unittest_classes_hierarchy.svg)
+![Django test](django_unittest_classes_hierarchy.svg)
 	* SimpleTestCase
 	* TransactionTestCase
 	* TestCase
