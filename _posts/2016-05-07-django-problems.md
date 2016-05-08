@@ -13,3 +13,6 @@ disqus: y
 
 2. 解决：把各个app下migrations的文件删除，重新makemigrations，运行单元测试即可
 3. 待解决：为什么这样就行了，挖坑待填
+
+###运行时指定settings.py
+python manage.py test --setting=Gym.settings_test.py
