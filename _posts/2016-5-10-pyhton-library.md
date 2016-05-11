@@ -27,4 +27,6 @@ disqus: y
         # d.setdefault(k, []).append(v)即先在d中查找是否有k这个key，没有，创建一个空list，把v append进去
             
 
+###[functools](https://docs.python.org/2/library/functools.html)
+
         
