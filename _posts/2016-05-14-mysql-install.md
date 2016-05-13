@@ -1,6 +1,6 @@
 ---
 layout: post
-titile: MySQL安装记录
+title: MySQL安装记录
 disqus: y
 ---
 
