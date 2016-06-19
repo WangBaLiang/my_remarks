@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Django Admin源码阅读
+categories: [编程]
+tags: [Django]
 disqus: y
 ---
 

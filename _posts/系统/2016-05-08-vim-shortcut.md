@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Vim快捷键备忘
-tags: [vim]
+categories: [系统]
+tags: [编译器]
 disqus: y
 ---
 

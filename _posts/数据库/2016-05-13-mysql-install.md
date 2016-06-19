@@ -1,6 +1,8 @@
 ---
 layout: post
 title: MySQL安装
+categories: [数据库]
+tags: [MySQL]
 disqus: y
 ---
 

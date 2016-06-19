@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Python库
+categories: [编程]
 disqus: y
 ---
 

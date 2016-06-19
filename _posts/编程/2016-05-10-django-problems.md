@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Django的问题记录
+categories: [编程]
 tags: [Django]
 disqus: y
 ---
