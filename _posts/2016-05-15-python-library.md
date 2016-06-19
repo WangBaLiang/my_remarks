@@ -29,4 +29,25 @@ disqus: y
 
 ###[functools](https://docs.python.org/2/library/functools.html)
 
-        
+###copy
+
+        import copy
+        a = [1, 2, 3, 4, ['a', 'b']]  #原始对象
+        b = a  #赋值，传对象的引用
+        c = copy.copy(a)  #对象拷贝，浅拷贝
+        d = copy.deepcopy(a)  #对象拷贝，深拷贝
+        a.append(5)  #修改对象a
+        a[4].append('c')  #修改对象a中的['a', 'b']数组对象
+        print 'a = ', a
+        print 'b = ', b
+        print 'c = ', c
+        print 'd = ', d
+        输出结果：
+        a =  [1, 2, 3, 4, ['a', 'b', 'c'], 5]
+        b =  [1, 2, 3, 4, ['a', 'b', 'c'], 5]
+        c =  [1, 2, 3, 4, ['a', 'b', 'c']]
+        d =  [1, 2, 3, 4, ['a', 'b']] 
+
+1. 首先记住一点Python中一切皆对象，变量通过引用指向内存中的对象
+2. 注意c的值，c[4]被改变了，因为a[4]指向内存中的另一个list对象，
+3. copy后，c[4]也指向该list对象，a[4].append('c')其实是改变了该list对象

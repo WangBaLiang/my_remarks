@@ -1,35 +1,25 @@
-<html>
-  <head>
-    <meta content='{{ page.title }} - {{ site.title }}' property='og:title' />
-    <title>{{ page.title }} - {{ site.title }}</title>
-    {% include head.html %}
-  </head>
-  <body>
-    {% include header.html %}
-    <div id='container'>
-      {% include links.html %}
-      {% include pages.html %}
-      <div class="content">
-        <section class='post'>
-          <h1 class="upcase">
-            <div class='date'>{{ page.date | date_to_string }}</div>
-            {{ page.title }}
-          </h1>
-          {{ content }}
-          {% include signoff.html %}
-
-
-        </section>
-      </div>
-      {% if page.share == 'y' %}
-        {% include share.html %}
-      {% endif %}
-
-      {% if page.disqus == 'y' %}
-        {% include disqus.html %}
-      {% endif %}
-      {% include links.html %}
+---
+layout: base
+---
+<div class="row">
+  <div class="col-md-13 aside3-title">
+    <br>
+    <h2 id="#identifier">{{ page.title }}</h2>
+    {{ page.date | date:"%Y年%m月%d日" }}
+  </div>
+  <div class="col-md-13 aside3-content">
+    <hr>
+    <div id="content">
+      {{ content }}
     </div>
-    {% include footer.html %}
-  </body>
-</html>
+    <hr>
+    {% include disqus.html %}
+  </div>
+  <!-- 目录 -->
+  <div id="content_table" style="position:fixed;right:20px;top:120px;display:none;">
+    <div class="panel panel-success">
+      <div class="panel-body" id="nav"></div>
+    </div>
+  </div>
+</div>
+
