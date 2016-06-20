@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Django单元测试
-categories: [编程]
+categories: [Django]
 disqus: y
 tags: [Django]
 ---

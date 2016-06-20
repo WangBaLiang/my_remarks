@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Django REST框架
-categories: [编程]
+categories: [Django]
 tags: [Django REST]
 disqus: y
 ---

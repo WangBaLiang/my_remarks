@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Django ORM源码阅读
-categories: [编程]
+categories: [Django]
 publiced: false
 disqus: y 
 ---

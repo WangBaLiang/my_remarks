@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Django auth阅读
-categories: [编程]
+categories: [Django]
 tags: [Django, 源码]
 disqus: y
 ---
