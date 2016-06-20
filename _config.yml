@@ -29,7 +29,7 @@ favicon: /public/img/deer3.png
 
 # disqus 设置
 disqus:
-  shortname: T_T 
+  shortname: wuruimiao
 
 # 主题设置，自动激活某个标签
 active: 编程
