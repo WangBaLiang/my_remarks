@@ -2,7 +2,7 @@
 layout: post
 title: Vim快捷键备忘
 categories: [系统]
-tags: [编译器]
+tags: [vim]
 disqus: y
 ---
 
