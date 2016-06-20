@@ -1,7 +1,7 @@
 ---
 layout: post
 title: python socket
-categories: [Python]
+categories: [编程]
 tags: [socket]
 disqus: y
 ---

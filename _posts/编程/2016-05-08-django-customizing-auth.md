@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Django自定义认证
-categories: [Django]
+categories: [编程]
 tags: [Django]
 disqus: y
 ---

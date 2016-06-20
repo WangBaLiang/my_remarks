@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Django静态文件部署
-categories: [Django]
+categories: [编程]
 tags: [Django]
 disqus: y
 ---
