@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MySQL
+title: MySQL安装及使用
 categories: [数据库]
 tags: [MySQL]
 disqus: y
