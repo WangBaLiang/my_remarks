@@ -10,6 +10,8 @@ disqus: y
 1. 版本5.7，参照[官方文档](https://dev.mysql.com/doc/refman/5.7/en/binary-installation.html)
 2. 下面是官方提供的命令
 
+        apt-get install libaio1
+        5.7
         shell> groupadd mysql
         shell> useradd -r -g mysql -s /bin/false mysql
         shell> cd /usr/local
@@ -28,6 +30,25 @@ disqus: y
         shell> bin/mysqld_safe --user=mysql &
         # Next command is optional
         shell> cp support-files/mysql.server /etc/init.d/mysql.server
+
+        5.5
+        shell> groupadd mysql
+        shell> useradd -r -g mysql -s /bin/false mysql
+        shell> cd /usr/local
+        shell> tar zxvf /path/to/mysql-VERSION-OS.tar.gz
+        shell> ln -s full-path-to-mysql-VERSION-OS mysql
+        shell> cd mysql
+        shell> chown -R mysql .
+        shell> chgrp -R mysql .
+        shell> scripts/mysql_install_db --user=mysql --base_dir=/usr/local/mysql --datadir=/usr/local/mysql/data
+        shell> chown -R root .
+        shell> chown -R mysql data
+        # Next command is optional
+        shell> cp support-files/my-medium.cnf /etc/my.cnf
+        shell> bin/mysqld_safe --user=mysql &
+        # Next command is optional
+        shell> cp support-files/mysql.server /etc/init.d/mysql.server
+
 
 3. 安装完成后，无法启动，报错“Fatal error: Can't open and lock privilege tables: Table 'mysql.user' doesn't exist” 
 4. 查看/usr/local/mysql/data/mysql目录没有数据，回想了下，在第2步中，解压之后是没有建data目录的
@@ -56,6 +77,13 @@ disqus: y
         // 如果提示依赖错误，执行
         sudo apt-get -f install
 
+
+##MySQL Ubuntu卸载
+        
+        # 查看安装
+        dpkg -l |grep mysql
+        dpkg -P 彻底卸载
+        dpkg -r
 
 
 ##命令备忘
@@ -90,6 +118,8 @@ disqus: y
 注释my.cnf中的    bind-address = 127.0.0.1
 
 
+###can't read from messagefile '/usr/share/mysql/english/errmsg.sys'
+cp /usr/local/mysql/share/english/errmsg.sys /usr/share/mysql/english/errmsg.sys
 
 
 
