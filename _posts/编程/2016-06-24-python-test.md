@@ -40,9 +40,9 @@ kernprof.py -l -v test.py
 
 
 ###使用memory_profiler分析内存占用
-pip install -U memory_profiler     
+pip install -U memory\_profiler     
 pip install psutil    
 为函数添加@profile装饰器，不用导入其他东西      
-python -m memory_profiler test.py     
+python -m memory\_profiler test.py     
 
 
