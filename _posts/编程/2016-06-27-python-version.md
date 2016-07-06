@@ -47,3 +47,7 @@ pip过慢解决
 index-url = http://mirrors.aliyun.com/pypi/simple/                                                        
 [install]                                                                                                 
 trusted-host=mirrors.aliyun.com
+
+##pip备忘
+pip freeze > requirements.txt    
+pip install -r requirements.txt

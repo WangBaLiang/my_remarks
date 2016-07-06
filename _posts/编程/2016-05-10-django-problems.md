@@ -63,3 +63,5 @@ cant execute queries until the end of the atomic block.
 3. urls.append(...)这种写法也是不行的
 4. return urls+myurl 不行
 5. 可见return的url顺序有要求，具体原理参见django url
+
+###使用Thrift的时候，如果从服务取不到数据，检查下thrift定义文件
