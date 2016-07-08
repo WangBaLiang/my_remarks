@@ -5,6 +5,21 @@ categories: [编程]
 tags: []
 disqus: y
 ---
+##Uncaught TypeError: Cannot read property 'getCount' of null
+原因是store ajax没取到数据。    
+额，不是上面的原因。又遇到了。  
+恩，是写错了。    
+
+        Ext.onReady(function(){
+            var grid = Ext.create('Ext.panel.Panel', {
+                .......
+                Ext.apply(this, {
+                    items:[{}]    
+                })    
+            })
+        })  
+
+以上写法会导致这个错误
 ###Ext.toolbar.Paging xtype: pagingtoolbar
 
     var itemsPerPage = 2; // set the number of items you want per page

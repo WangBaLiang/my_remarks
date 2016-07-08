@@ -10,12 +10,13 @@ disqus: y
 
 ##pyenv安装和使用备忘                                                                                       
 安装git                                                                                                   
-git clone https://github.com/yyuu/pyenv.git ~/.pyenv
-在~/.bashrc中添加                                                           
-export PYENV\_ROOT="$HOME/.pyenv"                       
-export PATH="$PYENV\_ROOT/bin:$PATH"                    
-eval "$(pyenv init -)"                                                          
-                                                                                                          
+        git clone https://github.com/yyuu/pyenv.git ~/.pyenv           
+        echo 'export PYENV_ROOT="$HOME/.pyenv"'>> ~/.bashrc      
+        echo 'export PATH="$PYENV_ROOT/bin:$PATH"'>> ~/.bashrc
+        echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+        exec $SHELL -l                                                     
+                         
+
 安装gcc，否则无法编译安装python                                                                           
 yum install gcc                                                                                           
                                                                                                           

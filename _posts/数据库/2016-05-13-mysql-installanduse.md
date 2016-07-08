@@ -5,8 +5,11 @@ categories: [数据库]
 tags: [MySQL]
 disqus: y
 ---
+##下载地址
+5.7二进制包    
+wget -c http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.13-linux-glibc2.5-x86_64.tar.gz
 
-##MySQL源码安装记录
+##MySQL二进制包安装记录
 1. 版本5.7，参照[官方文档](https://dev.mysql.com/doc/refman/5.7/en/binary-installation.html)
 2. 下面是官方提供的命令
 
@@ -40,7 +43,7 @@ disqus: y
         shell> cd mysql
         shell> chown -R mysql .
         shell> chgrp -R mysql .
-        shell> scripts/mysql_install_db --user=mysql --base_dir=/usr/local/mysql --datadir=/usr/local/mysql/data
+        shell> scripts/mysql_install_db --user=mysql
         shell> chown -R root .
         shell> chown -R mysql data
         # Next command is optional
@@ -50,11 +53,7 @@ disqus: y
         shell> cp support-files/mysql.server /etc/init.d/mysql.server
 
 
-3. 安装完成后，无法启动，报错“Fatal error: Can't open and lock privilege tables: Table 'mysql.user' doesn't exist” 
-4. 查看/usr/local/mysql/data/mysql目录没有数据，回想了下，在第2步中，解压之后是没有建data目录的
-5. 删除data目录下的数据（还未使用没有重要数据），检查目录的权限，具体看第2步
-6. 执行bin/mysqld --initialize --user=mysql，会默认给root指定一个密码，然后启动数据库
-7. 修改root密码，直接使用下面语句会报错：ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
+
 
         UPDATE mysql.user SET Password=PASSWORD('your_new_password') WHERE User='root'; 
 
@@ -122,8 +121,21 @@ disqus: y
 cp /usr/local/mysql/share/english/errmsg.sys /usr/share/mysql/english/errmsg.sys
 
 
+###Fatal error: Can't open and lock privilege tables: Table 'mysql.user' doesn't exist
+1. 安装完成后，无法启动，报错“Fatal error: Can't open and lock privilege tables: Table 'mysql.user' doesn't exist” 
+2. 查看/usr/local/mysql/data/mysql目录没有数据，回想了下，在第2步中，解压之后是没有建data目录的
+3. 删除data目录下的数据（还未使用没有重要数据），检查目录的权限，具体看第2步
+4. 执行bin/mysqld --initialize --user=mysql，会默认给root指定一个密码，然后启动数据库
+5. 修改root密码，直接使用下面语句会报错：ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.     
+
+每次遇到这个问题都要卡一下，结果是因为其他地方有my.cnf文件，导致总出问题
+
+        $ find / -name my.cnf
+        /etc/my.cnf
+        /etc/mysql/my.cnf
 
 
-
-
+###Can't start server : Bind on unix socket: Permission denied
+5.7的折腾不过，装5.5的，报这个错    
+解决方法：把my.cnf里的socket位置定为/tmp下就好
 
