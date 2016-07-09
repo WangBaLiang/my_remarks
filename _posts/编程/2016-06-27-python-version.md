@@ -9,7 +9,8 @@ disqus: y
 
 
 ##pyenv安装和使用备忘                                                                                       
-安装git                                                                                                   
+安装git                 
+                                                                                  
         git clone https://github.com/yyuu/pyenv.git ~/.pyenv           
         echo 'export PYENV\_ROOT="$HOME/.pyenv"'>> ~/.bashrc      
         echo 'export PATH="$PYENV\_ROOT/bin:$PATH"'>> ~/.bashrc
