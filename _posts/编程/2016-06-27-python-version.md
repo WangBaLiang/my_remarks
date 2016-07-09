@@ -11,8 +11,8 @@ disqus: y
 ##pyenv安装和使用备忘                                                                                       
 安装git                                                                                                   
         git clone https://github.com/yyuu/pyenv.git ~/.pyenv           
-        echo 'export PYENV_ROOT="$HOME/.pyenv"'>> ~/.bashrc      
-        echo 'export PATH="$PYENV_ROOT/bin:$PATH"'>> ~/.bashrc
+        echo 'export PYENV\_ROOT="$HOME/.pyenv"'>> ~/.bashrc      
+        echo 'export PATH="$PYENV\_ROOT/bin:$PATH"'>> ~/.bashrc
         echo 'eval "$(pyenv init -)"' >> ~/.bashrc
         exec $SHELL -l                                                     
                          
@@ -35,7 +35,7 @@ pyenv local 2.7.6 3.3.3 #设置多个版本
 pyenv global 2.7.11 #.pyenv/version，改变其内容，切换全局的python                
 pyenv global 2.7.6 3.3.3                                                                                  
                                                                                                      
-pyenv shell pypy-2.2.1 #设置PYENV_VERSION环境变量来切换shell的python             
+pyenv shell pypy-2.2.1 #设置PYENV\_VERSION环境变量来切换shell的python             
 pyenv shell --unset                                                                                       
                                                                                                           
 pyenv rehash #装完2.7.11后执行                                                                            

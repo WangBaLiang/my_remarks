@@ -139,3 +139,6 @@ cp /usr/local/mysql/share/english/errmsg.sys /usr/share/mysql/english/errmsg.sys
 5.7的折腾不过，装5.5的，报这个错    
 解决方法：把my.cnf里的socket位置定为/tmp下就好
 
+###unable to lock ./ibdata1 error 11
+搜到一个说法是磁盘空间不够，检查了，不是。     
+
