@@ -53,3 +53,7 @@ trusted-host=mirrors.aliyun.com
 ##pip备忘
 pip freeze > requirements.txt    
 pip install -r requirements.txt
+
+##问题
+###在为多个用户配置环境的时候，pyenv放在root下不行
+将用户分为一个组，新建文件夹，chgrp修改文件组，确保用户组有执行权限。把.pyenv放到新建的文件夹里，修改.pyenv/shims/python中的路径，否则用户使用Python的时候会指向错误的位置。

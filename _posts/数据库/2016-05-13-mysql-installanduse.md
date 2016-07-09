@@ -67,7 +67,7 @@ wget -c http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.13-linux-glibc2.5
 10. 密码有过期时间，一旦过期进入严格模式就会导致7的错误
 11. SET PASSWORD = PASSWORD('new_password');然后就可以重新设置密码
 
-##MySQL Ubuntu安装
+##MySQL Ubuntu安装与卸载
 
         tar -xvf mysql-server_MVER-DVER_CPU.deb-bundle.tar
         sudo apt-get install libaio1
@@ -75,10 +75,6 @@ wget -c http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.13-linux-glibc2.5
         sudo dpkg -i mysql-{common,community-client,client,community-server,server}_*.deb
         // 如果提示依赖错误，执行
         sudo apt-get -f install
-
-
-##MySQL Ubuntu卸载
-        
         # 查看安装
         dpkg -l |grep mysql
         dpkg -P 彻底卸载
@@ -90,10 +86,13 @@ wget -c http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.13-linux-glibc2.5
 
         # 导出数据和表结构
         mysqldump -u用户名 -p密码 数据库名 > 数据库名.sql
+
         # 只导出表结构
         mysqldump -u用户名 -p密码 -d 数据库名 > 数据库名.sql
+
         # 创建数据库
         mysql>create database abc character set utf-8;
+
         # 导入sql
         # 方法一
         mysql>use abc
@@ -111,24 +110,36 @@ wget -c http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.13-linux-glibc2.5
         update user set host = '%' where user ='root';
         flush privileges;
 
+        #修改root密码
+        #第一种
+        mysql> SET PASSWORD FOR 'root'@'localhost' = PASSWORD('newpass');
+        #第二种
+        mysqladmin -u root password "newpass"
+        mysqladmin -u root password oldpass "newpass"
+        #第三种
+        mysql> use mysql;
+        mysql> UPDATE user SET Password = PASSWORD('newpass') WHERE user = 'root';
+        mysql> FLUSH PRIVILEGES;
+        #忘记root密码
+        mysqld_safe --skip-grant-tables&
+        mysql -u root mysql
+        mysql> UPDATE user SET password=PASSWORD("new password") WHERE user='root';
+        mysql> FLUSH PRIVILEGES;
+
+
 
 ##问题备忘
 ###已为远程访问赋权，报错2003 can't connect to mysql server on
 注释my.cnf中的    bind-address = 127.0.0.1
-
 
 ###can't read from messagefile '/usr/share/mysql/english/errmsg.sys'
 cp /usr/local/mysql/share/english/errmsg.sys /usr/share/mysql/english/errmsg.sys
 
 
 ###Fatal error: Can't open and lock privilege tables: Table 'mysql.user' doesn't exist
-1. 安装完成后，无法启动，报错“Fatal error: Can't open and lock privilege tables: Table 'mysql.user' doesn't exist” 
-2. 查看/usr/local/mysql/data/mysql目录没有数据，回想了下，在第2步中，解压之后是没有建data目录的
-3. 删除data目录下的数据（还未使用没有重要数据），检查目录的权限，具体看第2步
-4. 执行bin/mysqld --initialize --user=mysql，会默认给root指定一个密码，然后启动数据库
-5. 修改root密码，直接使用下面语句会报错：ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.     
-
-每次遇到这个问题都要卡一下，结果是因为其他地方有my.cnf文件，导致总出问题
+我遇到的原因如下：      
+安装时没有指定datadir，默认应该装在/var/lib/mysql下，但是my.cnf里的datadir不是这个路径。     
+还有可能，安装时指定了路径，my.cnf配的路径也一样，但是却还是报这个错。原因是其他路径下可能有残留的my.cnf，导致配置覆盖。
 
         $ find / -name my.cnf
         /etc/my.cnf
@@ -137,8 +148,8 @@ cp /usr/local/mysql/share/english/errmsg.sys /usr/share/mysql/english/errmsg.sys
 
 ###Can't start server : Bind on unix socket: Permission denied
 5.7的折腾不过，装5.5的，报这个错    
-解决方法：把my.cnf里的socket位置定为/tmp下就好
+解决方法：把my.cnf里的socket位置定为权限/tmp下就好
 
 ###unable to lock ./ibdata1 error 11
 搜到一个说法是磁盘空间不够，检查了，不是。     
-
+啥原因，不知道，折腾了下，我靠，好了。
