@@ -6,7 +6,7 @@ tags: [MySQL]
 disqus: y
 ---
 ##下载地址
-5.7二进制包    
+5.7二进制包
 wget -c http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.13-linux-glibc2.5-x86_64.tar.gz
 
 ##MySQL二进制包安装记录
@@ -55,7 +55,7 @@ wget -c http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.13-linux-glibc2.5
 
 
 
-        UPDATE mysql.user SET Password=PASSWORD('your_new_password') WHERE User='root'; 
+        UPDATE mysql.user SET Password=PASSWORD('your_new_password') WHERE User='root';
 
 8. 参考[stackoverflow](http://stackoverflow.com/questions/33467337/reset-mysql-root-password-using-alter-user-statement-after-install-on-mac)上的回答
 9. 在[官方文档](https://dev.mysql.com/doc/refman/5.6/en/alter-user.html)中有介绍：
@@ -66,6 +66,11 @@ wget -c http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.13-linux-glibc2.5
 
 10. 密码有过期时间，一旦过期进入严格模式就会导致7的错误
 11. SET PASSWORD = PASSWORD('new_password');然后就可以重新设置密码
+
+##mysqldiff安装与使用
+* [下载地址](http://cdn.mysql.com//Downloads/MySQLGUITools/mysql-utilities-1.5.6.tar.gz)
+* python安装
+* 使用 mysqldiff --server1=root:passwd@ip:3306 --difftype=sql --force dev1:dev2
 
 ##MySQL Ubuntu安装与卸载
 
@@ -137,8 +142,8 @@ cp /usr/local/mysql/share/english/errmsg.sys /usr/share/mysql/english/errmsg.sys
 
 
 ###Fatal error: Can't open and lock privilege tables: Table 'mysql.user' doesn't exist
-我遇到的原因如下：      
-安装时没有指定datadir，默认应该装在/var/lib/mysql下，但是my.cnf里的datadir不是这个路径。     
+我遇到的原因如下：
+安装时没有指定datadir，默认应该装在/var/lib/mysql下，但是my.cnf里的datadir不是这个路径。
 还有可能，安装时指定了路径，my.cnf配的路径也一样，但是却还是报这个错。原因是其他路径下可能有残留的my.cnf，导致配置覆盖。
 
         $ find / -name my.cnf
@@ -147,9 +152,9 @@ cp /usr/local/mysql/share/english/errmsg.sys /usr/share/mysql/english/errmsg.sys
 
 
 ###Can't start server : Bind on unix socket: Permission denied
-5.7的折腾不过，装5.5的，报这个错    
+5.7的折腾不过，装5.5的，报这个错
 解决方法：把my.cnf里的socket位置定为权限/tmp下就好
 
 ###unable to lock ./ibdata1 error 11
-搜到一个说法是磁盘空间不够，检查了，不是。     
+搜到一个说法是磁盘空间不够，检查了，不是。
 啥原因，不知道，折腾了下，我靠，好了。
