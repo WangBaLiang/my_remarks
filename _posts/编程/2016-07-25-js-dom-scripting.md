@@ -67,4 +67,9 @@ disqus: y
     * 伪协议：javascript: ；真协议：http:....；避免使用javascript: 调用js代码
     * <a href="#" onclick="popUp('www.exmple.com');return False">XXX<a> 这种也不好
     * 以上两种不利于平稳退化，如果用户禁用了浏览器javascript功能，链接将毫无用处
-    *
+    * <a href="www.exmple.com" onclick="popUp('www.exmple.com');return False">XXX<a> 这种方式比上面好
+2. 分离
+    * CSS使用<link>代替style
+    * 类似于使用style属性，在HTML文档里使用诸如onclick之类的属性也是一种既没有效率又容易引发问题的做法
+    * 分离JavaScript，在外部JavaScript文件里把一个事件添加到HTML文档中的某个元素上
+
