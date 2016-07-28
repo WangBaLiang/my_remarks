@@ -1,10 +1,10 @@
 permalink: /:year/:month/:day/:title.html
 paginate: 10
-markdown: redcarpet
+# markdown: redcarpet
 
 # 作者信息
-author: 
-  name: Tan Wu 
+author:
+  name: Tan Wu
   email: 270927331@qq.com
   link: http://wuruimiao.github.io
   # weibo: http://weibo.com/orangeissweet
@@ -13,7 +13,7 @@ author:
   # linkedin: https://www.linkedin.com/pub/anya-lin/81/91/232
 
 # 站点信息
-title: 奔跑吧少年 
+title: 奔跑吧少年
 description: My personal blog
 url: http://wuruimiao.github.io
 # rss_url: /pages/atom.xml
@@ -24,7 +24,7 @@ favicon: /public/img/deer3.png
 
 # google analytics 设置
 # ga:
-#  id: UA-54262064-1 
+#  id: UA-54262064-1
 #  url: painterlin.com
 
 # disqus 设置
@@ -35,7 +35,7 @@ disqus:
 active: 编程
 
 # 首页除了最新文章外显示分类
-cates: 
+cates:
   - Optimization
   - LaTeX
 
