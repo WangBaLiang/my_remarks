@@ -63,10 +63,11 @@ disqus: y
 
 ###最佳实践
 ####平稳退化
-* 伪协议：javascript: ；真协议：http:....；避免使用javascript: 调用js代码
-* <a href="#" onclick="popUp('www.exmple.com');return False">XXX<a> 这种也不好
-* 以上两种不利于平稳退化，如果用户禁用了浏览器javascript功能，链接将毫无用处
-* <a href="www.exmple.com" onclick="popUp('www.exmple.com');return False">XXX<a> 这种方式比上面好
+
+    * 伪协议：javascript: ；真协议：http:....；避免使用javascript: 调用js代码
+    * <a href="#" onclick="popUp('www.exmple.com');return False">XXX<a> 这种也不好
+    * 以上两种不利于平稳退化，如果用户禁用了浏览器javascript功能，链接将毫无用处
+    * \<a href="www.exmple.com" onclick="popUp('www.exmple.com');return False">XXX<a> 这种方式比上面好
 
 ####分离
 * CSS使用<link>代替style
@@ -96,7 +97,7 @@ disqus: y
         }
 
 ####向后兼容
-        
+
         // 对象检测
         window.onload = function(){
             if(!document.getElementsByTagName) return false;
@@ -129,11 +130,11 @@ disqus: y
 
         function showPic(whichpic){
             // 将占位的图片替换为链接所指的图片
-            
+
             // 优化后，增加了一些判断
             if (!document.getElementById("placeholder"))return false;
             var source = whichpic.getAttribute("href");
-            
+
             // 判断占位图片是不是真的，nodeName返回的都是大写字母的值
             if (placeholder.nodeName != "IMG") return false;
             var placeholder = document.getElementById("placeholder");
@@ -169,7 +170,7 @@ disqus: y
                     // 改进
                     return showPic(this) ? false : true;
                 }
-            }   
+            }
         }
 
         // onload事件
