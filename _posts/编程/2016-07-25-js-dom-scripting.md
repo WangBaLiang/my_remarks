@@ -5,7 +5,7 @@ categories: [编程]
 tags: [Django REST]
 disqus: y
 ---
-###一. 基础知识
+### 一. 基础知识
 * 全局变量和局部变量：var声明局部变量
 * DOM
     1. D：文档
@@ -59,15 +59,15 @@ disqus: y
 
 * 使用setAttribute代替element.value="**"，可以避免兼容性问题
 
-###二. 最佳实践
-####平稳退化
+### 二. 最佳实践
+#### 平稳退化
 
     * 伪协议：javascript: ；真协议：http:....；避免使用javascript: 调用js代码
     * <a href="#" onclick="popUp('www.exmple.com');return False">XXX<a> 这种也不好
     * 以上两种不利于平稳退化，如果用户禁用了浏览器javascript功能，链接将毫无用处
     * <a href="www.exmple.com" onclick="popUp('www.exmple.com');return False">XXX<a> 这种方式比上面好
 
-####分离
+#### 分离
 * CSS使用<link>代替style
 * 类似于使用style属性，在HTML文档里使用诸如onclick之类的属性也是一种既没有效率又容易引发问题的做法
 * 分离JavaScript，在外部JavaScript文件里把一个事件添加到HTML文档中的某个元素上
@@ -94,7 +94,7 @@ disqus: y
             window.open(winURL, "popup", "width=320, height=480");
         }
 
-####向后兼容
+#### 向后兼容
 
         // 对象检测
         window.onload = function(){
@@ -108,7 +108,7 @@ disqus: y
             }
         }
 
-####性能考虑
+#### 性能考虑
 * 尽量少访问DOM和尽量减少标记
 * 合并和防止脚本
     * 合并脚本减少页面请求次数
@@ -116,7 +116,7 @@ disqus: y
     * 把<script>放到文档末尾，<body>标记前
 * 使用工具压缩脚本
 
-###三. 图片库改进
+### 三. 图片库改进
 
         // html
         <ul id="imagegallery">
