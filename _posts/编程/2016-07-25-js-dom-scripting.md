@@ -53,11 +53,19 @@ disqus: y
 * nodeValue更新节点内容
 * window.open(url, name, feature)
 
-            function popUp(winURL){
-                window.open(winURL, "popup", "width=320, height=480");
-            }
+        function popUp(winURL){
+            window.open(winURL, "popup", "width=320, height=480");
+        }
 
 * 使用setAttribute代替element.value="**"，可以避免兼容性问题
+* DOM Core和HTML DOM
+
+        // DOM Core
+        document.getElementByTagName("form")
+        element.getAttribute("src")
+        // HTML DOM
+        document.forms
+        element.src
 
 ### 二. 最佳实践
 
@@ -194,8 +202,9 @@ disqus: y
         }
         addLoadEvent(prepareGallery);
 
-
-
+### 四. 动态创建标记
+#### 回顾
+document.write
 
 
 
