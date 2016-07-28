@@ -203,8 +203,7 @@ disqus: y
         addLoadEvent(prepareGallery);
 
 ### 四. 动态创建标记
-#### 回顾
-document.write
+#### document.write和
 
 
 
