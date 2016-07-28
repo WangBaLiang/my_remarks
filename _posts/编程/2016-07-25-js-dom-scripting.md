@@ -203,8 +203,6 @@ disqus: y
         addLoadEvent(prepareGallery);
 
 ### 四. 动态创建标记
-#### document.write和
-
-
-
-
+#### document.write和innerHTML属性
+1. 把结构、行为和样式分开。只要有可能，就应该用外部CSS文件代替<font>标签去设定和管理网页的样式信息，最好用外部JavaScript文件去控制网页的行为。应该避免在<body>部分乱用<script>标签，避免使用document.write方法
+2.
