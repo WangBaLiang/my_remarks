@@ -60,6 +60,7 @@ disqus: y
 * 使用setAttribute代替element.value="**"，可以避免兼容性问题
 
 ### 二. 最佳实践
+
 #### 平稳退化
 
     * 伪协议：javascript: ；真协议：http:....；避免使用javascript: 调用js代码
