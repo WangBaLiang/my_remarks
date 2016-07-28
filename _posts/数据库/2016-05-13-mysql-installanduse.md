@@ -54,9 +54,6 @@ wget -c http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.13-linux-glibc2.5
         # Next command is optional
         shell> cp support-files/mysql.server /etc/init.d/mysql.server
 
-
-
-
         UPDATE mysql.user SET Password=PASSWORD('your_new_password') WHERE User='root';
 
 8. 参考[stackoverflow](http://stackoverflow.com/questions/33467337/reset-mysql-root-password-using-alter-user-statement-after-install-on-mac)上的回答
