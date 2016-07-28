@@ -116,7 +116,7 @@ disqus: y
     * 把<script>放到文档末尾，<body>标记前
 * 使用工具压缩脚本
 
-###图片库改进
+###三. 图片库改进
 
         // html
         <ul id="imagegallery">
