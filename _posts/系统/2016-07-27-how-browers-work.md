@@ -11,4 +11,4 @@ disqus: y
 
 ## 浏览器介绍
 
-![浏览器组成](../images/browser_layers.png)
+![浏览器组成](images/browser_layers.png)
